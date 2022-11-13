@@ -31,23 +31,27 @@ create: (context) => Model(name: ~, size:~), // 클래스 생성자
 ```
 
 <br/><br/>
+
 4) 하위 위젯에 필요한 부분에 클래스 변수를 불러와요
 
 ```
 ${Provider.of<Model>(context).name} // 모델의 name 데이터를 불러오는 예시
 ```
 <br/><br/>
+
 5) 데이터 변화에 따라 UI를 변경하기 위해 데이터 클래스에 ChangeNotifier를 mixin 해줘요 <br/>
 but..  ChangeNotifier의 한계점
-<br/><br/> 1. 매번 수동으로 addListener를 등록해주어야 해요 <br/><br/>
-2. 수동으로 addListener를 제거해줘야 해요 <br/><br/>
-3. 모델 인스턴스를 매번 생성자를 통해 전달해야 해요 <br/><br/>
-4. UI 리빌드도 수동으로 해야 해요 <br/><br/>
-6) 해결책 : ChangeNotifierProvider 사용 <br/><br/>
-1. 모든 위젯들이 listen 할 수 있는 ChangeNotifier 인스턴스 생성 <br/><br/>
-2. 자동으로 필요 없는 ChangeNotifier 제거 <br/><br/>
-3. Provider.of 를 통해 위젯들이 쉽게 ChangeNotifier 인스턴스에 접근할 수 있어요 <br/><br/>
-4. 필요시 UI 리빌드 해줄 수 있고, 필요 없다면 listen:false 기능 제공 <br/><br/>
+<br/><br/> 1. 매번 수동으로 addListener를 등록해주어야 해요 
+<br/><br/>2. 수동으로 addListener를 제거해줘야 해요 
+<br/><br/>3. 모델 인스턴스를 매번 생성자를 통해 전달해야 해요 
+<br/><br/>4. UI 리빌드도 수동으로 해야 해요 <br/><br/>
+
+6) 해결책 : ChangeNotifierProvider 사용
+<br/><br/>1. 모든 위젯들이 listen 할 수 있는 ChangeNotifier 인스턴스 생성 
+<br/><br/>2. 자동으로 필요 없는 ChangeNotifier 제거
+<br/><br/>3. Provider.of 를 통해 위젯들이 쉽게 ChangeNotifier 인스턴스에 접근할 수 있어요 
+<br/><br/>4. 필요시 UI 리빌드 해줄 수 있고, 필요 없다면 listen:false 기능 제공 <br/><br/>
+
 7) Provider를 ChangeNotifierProvider 로 변경해요 <br/><br/>
 8) 만약 여러가지 Provider가 필요하다면 MultiProvider를 사용 <br/><br/>providers: 속성으로 여러 Provdier 배열 사용 <br/><br/>
 
